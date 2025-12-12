@@ -1,0 +1,201 @@
+:root {
+  --primary-green: #19b35a;
+  --primary-green-dark: #149148;
+  --primary-green-light: #e6f7ec;
+  --text-dark: #2c3e50;
+  --text-muted: #6c757d;
+}
+
+body {
+  background-color: #f8f9fa; /* Fundo levemente cinza para contraste */
+}
+
+.votacao-container {
+  padding-bottom: 4rem;
+}
+
+.header-section {
+    margin-top: 2rem;
+}
+
+.votacao-title {
+  font-weight: 800;
+  color: var(--text-dark);
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+}
+
+.votacao-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- GRID DE CARDS (Moderno) --- */
+.votacao-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.votacao-card {
+  border: none;
+  border-radius: 1rem;
+  background: #fff;
+  /* Sombra suave em vez de borda grossa */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.05); 
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  height: 100%;
+}
+
+.votacao-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+.votacao-card.disabled-card {
+    opacity: 0.7;
+    background-color: #fcfcfc;
+    cursor: default;
+}
+.votacao-card.disabled-card:hover {
+    transform: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.votacao-card .card-title {
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.description-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+
+.status-dot {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 20px;
+    background-color: #f8f9fa;
+}
+
+.status-dot.active { 
+    color: var(--primary-green); 
+    background-color: var(--primary-green-light);
+}
+.status-dot.inactive { 
+    color: #999; 
+}
+
+.instruction-box {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 12px;
+    color: var(--text-dark);
+    font-weight: 500;
+    text-align: center;
+    border: 1px dashed #ced4da;
+}
+
+.opcoes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Responsivo */
+  gap: 1rem;
+}
+
+.opcao-card {
+  border: 1px solid #e9ecef;
+  background-color: #fff;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.opcao-card:hover {
+  border-color: var(--primary-green);
+  background-color: #fafffc;
+}
+
+.opcao-card.selected {
+  border-color: var(--primary-green);
+  background-color: var(--primary-green-light);
+  color: var(--primary-green-dark);
+  box-shadow: 0 4px 12px rgba(25, 179, 90, 0.15);
+}
+
+.check-indicator {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: var(--primary-green);
+    font-size: 1.1rem;
+}
+
+/* --- MODAL DE SUCESSO --- */
+.success-icon {
+  color: var(--primary-green);
+}
+.modal-success .modal-content {
+    border-radius: 1rem;
+    border: none;
+}
+.btn-votar {
+  background-color: var(--primary-green) !important;
+  border-color: var(--primary-green) !important;
+  font-weight: 600;
+}
+.btn-votar:hover {
+  background-color: var(--primary-green-dark) !important;
+}
+
+/* --- RANKING DRAG N DROP --- */
+.opcoes-grid.ranking-mode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.rankeado-wrapper {
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.rankeado-card {
+    flex-grow: 1;
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e0e0e0;
+    cursor: grab;
+    display: flex;
+    justify-content: center;
+}
+.rankeado-wrapper.dragging .rankeado-card {
+    background-color: var(--primary-green-light);
+    border-color: var(--primary-green);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
